@@ -1,52 +1,51 @@
 /*I: Re-state the problem with your own words
-  make method to check that all chars in char array are unique
+  sort stack using only another stack
 D: Define your goals; state the format of your solution
-  i want to check char by char to ensure all chars are unique
+    sort stack using only another stack cannot use anything but stack, stack has push pop peek isempty
 E, A: Use Duke’s 7 steps and include a description on how you broke the problem into sub-problems.
   
   Step 1: Work some small instances by hand
-    AA = flase
-    ABC = true
-    ABCA = false
+    s = {8,2,4,5,9,3,1}
+	
+	s = {2,4,5,9,3,1}2 needs to be after 8
+	s2 = {8}
+	int  t = 2, s = {8,4,5,9,3,1}
+	s2 = {2}
+	
   Step 2: Write down what you did
-    if a character matches a previous character then the answer is false
+    int holds temp smaller var till isempty or smaller pushes to s2, when s2 has all vars, pop push s2 to s so that smaller numbers are at top, like a similar to the solution to the queueu from stacks probem
   Step 3: Find Patterns
-    if var seen twice return false
+    use stacks as queues, push smallest numbers to top of second queue
   Step 4: Check by hand
-    AtBtCtAf = f
-    AtAf = f
-    AtBtCt = t
+    s = {1,4,3,2}
+	s2 = {}
+	s2 = {1}, s = {4,3,2}
+	s2 = {4,1}, s= {3,2}
+	3 < 4
+	int t = 3
+	s = {4,2} s2 = {1}
+	3>1
+	s2 = {3,1}
+	s2 = {4,3,1}, s = {2}
+	2 < 4
+	int t = 2
+	s = {4} s2 = {3,1}
+	2 < 3
+	s = {3,4} s2 = {1}
+	2 > 1
+	s2 = {2,1}, s = {3,4}
+	s2 = {3,2,1} s = {4}
+	s2 = {4,3,2,1} s = {}
+	pop push all to s
+	s2 = {}, s = {1,2,3,4}
+	return s = {1,2,3,4}
   Step 5: Translate to Code
 */
-public class prbfive {
-	public static void main (String[] args){
-		String str = "abcdefa";
-		System.out.println(unique(str));
-		str = "asdvbnm";
-		System.out.println(unique(str));
-		str = "zxcvbnmasdfghjklqwertyuiopp";
-		System.out.println(unique(str));
-		
-	}
-	public static boolean unique(String str){
-		if(str.length() > 255)
-			return false; //chars are 1 bit
-		boolean[] uni = new boolean[255];
-		for(int i = 0; i< str.length(); i++){
-			int n = str.charAt(i);
-			if(uni[n])
-				return false;
-			uni[n] = true;
-		}
-		return true;
-	}
-}
+
 /*  Step 6: Run Test Cases
-		false
-		true
-		false
+
   Step 7: Debug Failed Test Cases
 
 L: Reflect on the whole problem-solving process you went though, and state what you learned 
-	 thought of problem and requirments that show true, realized innate rules of programming languages, ran ideas through tested them.
+	 what is a data structure, we can use only one more stack and no other structure, an int value is not considered a structure, this means we can use 
 */

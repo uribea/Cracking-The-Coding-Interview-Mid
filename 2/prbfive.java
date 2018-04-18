@@ -27,11 +27,9 @@ E, A: Use Duke’s 7 steps and include a description on how you broke the proble
 */
 
 /*  Step 6: Run Test Cases
-		false
-		true
-		false
+	
   Step 7: Debug Failed Test Cases
 
 L: Reflect on the whole problem-solving process you went though, and state what you learned 
-	 thought of problem and requirments that show true, realized innate rules of programming languages, ran ideas through tested them.
+	 there are ways to do this with only linked lists, its not hard to treat a linked list like a string especially considering how easy it is to add either to the front or back of either, this method is not good for memory and is likely one of the slowest solutions to this problem.
 */

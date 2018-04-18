@@ -1,52 +1,32 @@
 /*I: Re-state the problem with your own words
-	
+	keep track of smallest number in a stack
 D: Define your goals; state the format of your solution
-  i want to check char by char to ensure all chars are unique
+  stack only has push and pop methods, we want to know the minimun number of the stack at all times.
 E, A: Use Duke’s 7 steps and include a description on how you broke the problem into sub-problems.
   
   Step 1: Work some small instances by hand
-    AA = flase
-    ABC = true
-    ABCA = false
+	{8} min =8	
+	{5,8} m = 5
+	{9,5,8} m = 5
+	{1,9,5,8} m = 1
+	{9,5,8} m = 5
   Step 2: Write down what you did
-    if a character matches a previous character then the answer is false
+    change min as you see smaller number added or removed from stack 
   Step 3: Find Patterns
-    if var seen twice return false
+    if smaller number pushed change smaller number, if smaller number popped revert, easy if you make another stack which keeps only pushes smaller numbers, and when the peekable number on the stack is popped on the normal stack it is also popped on the min stack
   Step 4: Check by hand
-    AtBtCtAf = f
-    AtAf = f
-    AtBtCt = t
+    s={8} m = {8}
+	s={5,8} m = {5,8}
+	s={9,5,8} m = {5,8}
+	s={1,9,5,8} m = {1,5,8}
+	s={9,5,8} m = {5,8}
   Step 5: Translate to Code
 */
-public class prbtwo {
-	public static void main (String[] args){
-		String str = "abcdefa";
-		System.out.println(unique(str));
-		str = "asdvbnm";
-		System.out.println(unique(str));
-		str = "zxcvbnmasdfghjklqwertyuiopp";
-		System.out.println(unique(str));
-		
-	}
-	public static boolean unique(String str){
-		if(str.length() > 255)
-			return false; //chars are 1 bit
-		boolean[] uni = new boolean[255];
-		for(int i = 0; i< str.length(); i++){
-			int n = str.charAt(i);
-			if(uni[n])
-				return false;
-			uni[n] = true;
-		}
-		return true;
-	}
-}
+
 /*  Step 6: Run Test Cases
-		false
-		true
-		false
+
   Step 7: Debug Failed Test Cases
 
 L: Reflect on the whole problem-solving process you went though, and state what you learned 
-	 thought of problem and requirments that show true, realized innate rules of programming languages, ran ideas through tested them.
+	 many solutions can be simplified with stacks, this is something we learned in automata and the whole concept of push down automaton. we use multiple stacks to answer this problem.
 */
